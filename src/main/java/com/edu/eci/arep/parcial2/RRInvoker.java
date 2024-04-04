@@ -10,9 +10,12 @@ import java.net.URL;
 public class RRInvoker {
 
     private static final String USER_AGENT = "Mozilla/5.0";
-    private static final String GET_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=fb&apikey=Q1QZFVJQ21K7C6XM";
+    private static String GET_URL = "";
+    private static int turn = 1;
 
-    public static void main(String[] args) throws IOException {
+    public static String invoke(String path) throws IOException {
+
+        setUrl(path);
 
         URL obj = new URL(GET_URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -36,10 +39,22 @@ public class RRInvoker {
 
             // print result
             System.out.println(response.toString());
+            return response.toString();
         } else {
             System.out.println("GET request not worked");
         }
         System.out.println("GET DONE");
+        return "ok";
+    }
+
+    private static void setUrl(String path) {
+        if(turn==1){
+            turn = 2;
+            GET_URL = "http://localhost:4567/" + path;
+        } else {
+            turn = 1;
+            GET_URL = "http://localhost:4567/" + path;
+        }
     }
 
 } 

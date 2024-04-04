@@ -12,7 +12,21 @@ public class Main {
         port(getPort());
         
         
-        get("/", (req,res) -> return );
+        get("/linearSearch", (req,res) -> {
+
+            String[] uri = req.uri().split("/");
+            String path = uri[uri.length-1];
+
+            return RRInvoker.invoke(path);
+        });
+
+        get("/binarySearch", (req,res) -> {
+
+            String[] uri = req.uri().split("/");
+            String path = uri[uri.length-1];
+
+            return RRInvoker.invoke(path);
+        });
     }
 
     private static int getPort() {
