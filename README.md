@@ -1,36 +1,93 @@
 # Parcial 2 AREP
 Mateo Olaya Garzón 
 
-## Instrucciones para ejecutar la aplicación
+Los algoritmos de búsqueda son esenciales para desarrollo de las ciencias de la computación. En este ejercicio los estudiantes crearán una solución web que explora dos algortimos de búsqueda: la búsqueda lineal y la búsqueda binaria.
+
+Diseñe, construya y despliegue un aplicación web para investigar los dos algoritmos de búsqueda. El programa debe estar desplegado en tres máquinas virtuales de EC2 de AWS como se describe abajo. Las tecnologías usadas en la solución deben ser maven, git, github, sparkjava, html5, y js. No use liberías adicionales.
+
+## Arquitectura 
+
+Diseñe un prototipo de sistema de microservicios que tenga un servicio (En la figura se representa con el nombre Math Services) para computar las funciones de ordenamiento.  El servicio de las funciones de ordenamiento debe estar desplegado en al menos dos instancias virtuales de EC2. Adicionalmente, debe implementar un service proxy que reciba las solicitudes de llamado desde los clientes  y se las delega a las dos instancias del servicio de ordenamiento usando un algoritmo de round-robin. El proxy deberá estar desplegado en otra máquina EC2. Asegúrese que se pueden configurar las direcciones y puertos de las instancias del servicio en el proxy usando variables de entorno del sistema operativo.  Finalmente, construya un cliente Web mínimo con un formulario que reciba el valor y de manera asíncrona invoke el servicio en el PROXY. Puede hacer un formulario para cada una de las funciones. El cliente debe ser escrito en HTML y JS.
+
+![image](https://github.com/Mateo0laya/Parcial-2---AREP-/assets/89365336/c8af3a78-4709-43da-9955-51e983459aa9)
+
+
+### Prerrequisitos
+
+- Java 8
+- Maven
+- Git
+- Navegador web
+- AWS EC-2
+
+
+## Instrucciones para ejecutar la aplicación 
 
 1. Clone el repositorio
-2. En el repositorio encontrará dos clases en la ruta: src/main/java/com/arep/parcial, las cuales son HttpServerClient.java y HttpServerBack.java
-3. Debe ejecutar ambas clases, asegurese de ejecutar ambas clases o la aplicación no correra correctamente
-4. En su navegador dirijase a http://localhost:35000/cliente
-5. Alli encontrara un campo de texto para enviar los comandos correspondientes del tipo:
-- Class(java.lang.Math)
-- invoke(java.lang.System, getenv)
-- unaryInvoke(java.lang.Math, abs, int, 3)
-- binaryInvoke(java.lang.Math, max, double, 4.5, double, -3.7)
+
+   'git clone https://github.com/Mateo0laya/Parcial-2---AREP-.git'
+   
+3. En el repositorio encontrará dos clases en la ruta: src/main/java/com/edu/eci/arep/parcial2/Main.java y src/main/java/com/edu/eci/arep/parcial2/services/MathService.java
+4. Debe ejecutar ambas clases, asegurese de ejecutar ambas clases o la aplicación no correra correctamente
+5. En su navegador dirijase a http://localhost:35000/
+6. Alli encontrara dos formularios, uno para LinearSearch y otro para BinarySearch
+
+## Instrucciones en AWS EC2
+
+1. Debe contar con 3 instancias en ejecución de EC2
+2. Instale Java, Git y Maven:
+   
+   'sudo yum install java'
+   'sudo yum install git'
+   'sudo yum install maven'
+
+3. Clone el repositorio
+
+   'git clone https://github.com/Mateo0laya/Parcial-2---AREP-.git'
+
+4. Cambie de directorio
+
+   'cd Parcial-2---AREP-'
+
+5. Instale las dependencias:
+
+   'mvn clean install'
+
+6. En la primera instancia (proxy) ejecute la clase Main:
+
+   'java -cp "target/classes:target/dependency/*" com.edu.eci.arep.parcial2.Main'
+
+7. En las otras dos instancias ejecute la clase MathService:
+
+   'java -cp "target/classes:target/dependency/*" com.edu.eci.arep.parcial2.services.MathService'
+
+Debe modificar las URLs provistas por AWS de las instancias MathService en la clase RRInvoker, especificamente en el metodo setUrl()
+   
 
 ### Test de la aplicación
-- unaryInvoke(java.lang.Math, abs, int, 3)
-  
-![image](https://github.com/Mateo0laya/Parcial-AREP/assets/89365336/8a3ddb21-00d9-4999-90bc-fac9b8e44b64)
 
-- binaryInvoke(java.lang.Math, max, double, 4.5, double, -3.7)
+https://youtu.be/MBHlQVXqbmw?si=KGPoVLHj-K-iUPvR
 
-![image](https://github.com/Mateo0laya/Parcial-AREP/assets/89365336/6cd92b5b-e24f-464d-a468-4947aaa9c5c6)
+LinearSearch, lista: 10,20,30,40,50, value: 30
 
-- invoke(java.lang.System, getenv)
+![image](https://github.com/Mateo0laya/Parcial-2---AREP-/assets/89365336/25d2a6b8-0efc-47f4-8344-49de85b9b8be)
 
-![image](https://github.com/Mateo0laya/Parcial-AREP/assets/89365336/cac530b4-abf5-472d-a676-f2122ec89c6e)
+BinarySearch. lista: 10,20,30,40,50, value: 99
 
-- Class(java.lang.Math)
+![image](https://github.com/Mateo0laya/Parcial-2---AREP-/assets/89365336/a6a5987c-a531-49b6-8dd4-4451abc30512)
 
-![image](https://github.com/Mateo0laya/Parcial-AREP/assets/89365336/8f721433-fe10-47a2-9b03-af5bf190194f)
+Round Robin durante la ejecución, una de las instancias atendio la primer petición (LinearSearch) y a otra atendio la segunda (BinarySearch)
 
-- unaryInvoke(java.lang.Integer, valueOf, String, "3")
+![image](https://github.com/Mateo0laya/Parcial-2---AREP-/assets/89365336/d14dacc2-e265-4fa1-b803-f2d83b54060a)
 
-![image](https://github.com/Mateo0laya/Parcial-AREP/assets/89365336/9a170570-0f67-43ec-a70e-0a4ecfae38cd)
 
+## Construido con
+
+* [Java](https://www.java.com/es/) - The main programming language
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [Spark](https://sparkjava.com/) - MicroFramework Web
+* [EC-2 AWS](https://aws.amazon.com/es/ec2/) - cloud Processing
+
+## Version
+
+Version 1.0.0.
