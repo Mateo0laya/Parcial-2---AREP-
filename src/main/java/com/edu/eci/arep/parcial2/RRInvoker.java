@@ -51,10 +51,10 @@ public class RRInvoker {
     private static void setUrl(String path) {
         if(turn==1){
             turn = 2;
-            GET_URL = "http://localhost:4567/" + path;
+            GET_URL = "http://ec2-3-80-113-206.compute-1.amazonaws.com:4567/" + path;
         } else {
             turn = 1;
-            GET_URL = "http://localhost:4567/" + path;
+            GET_URL = "http://ec2-54-227-180-218.compute-1.amazonaws.com:4567/" + path;
         }
     }
 
