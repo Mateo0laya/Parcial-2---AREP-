@@ -25,7 +25,7 @@ Diseñe un prototipo de sistema de microservicios que tenga un servicio (En la f
 
 1. Clone el repositorio
 
-   '''git clone https://github.com/Mateo0laya/Parcial-2---AREP-.git'''
+   ''' git clone https://github.com/Mateo0laya/Parcial-2---AREP-.git''' 
    
 3. En el repositorio encontrará dos clases en la ruta: src/main/java/com/edu/eci/arep/parcial2/Main.java y src/main/java/com/edu/eci/arep/parcial2/services/MathService.java
 4. Debe ejecutar ambas clases, asegurese de ejecutar ambas clases o la aplicación no correra correctamente
@@ -37,29 +37,29 @@ Diseñe un prototipo de sistema de microservicios que tenga un servicio (En la f
 1. Debe contar con 3 instancias en ejecución de EC2
 2. Instale Java, Git y Maven:
    
-   '''sudo yum install java'''
-   '''sudo yum install git'''
-   '''sudo yum install maven'''
+   ''' sudo yum install java''' 
+   ''' sudo yum install git''' 
+   ''' sudo yum install maven''' 
 
 3. Clone el repositorio
 
-   '''git clone https://github.com/Mateo0laya/Parcial-2---AREP-.git'''
+   ''' git clone https://github.com/Mateo0laya/Parcial-2---AREP-.git''' 
 
 4. Cambie de directorio
 
-   '''cd Parcial-2---AREP-'''
+   ''' cd Parcial-2---AREP-''' 
 
 5. Instale las dependencias:
 
-   '''mvn clean install'''
+   ''' mvn clean install''' 
 
 6. En la primera instancia (proxy) ejecute la clase Main:
 
-   '''java -cp "target/classes:target/dependency/*" com.edu.eci.arep.parcial2.Main'''
+   ''' java -cp "target/classes:target/dependency/*" com.edu.eci.arep.parcial2.Main''' 
 
 7. En las otras dos instancias ejecute la clase MathService:
 
-   '''java -cp "target/classes:target/dependency/*" com.edu.eci.arep.parcial2.services.MathService'''
+   ''' java -cp "target/classes:target/dependency/*" com.edu.eci.arep.parcial2.services.MathService''' 
 
 Debe modificar las URLs provistas por AWS de las instancias MathService en la clase RRInvoker, especificamente en el metodo setUrl()
    
