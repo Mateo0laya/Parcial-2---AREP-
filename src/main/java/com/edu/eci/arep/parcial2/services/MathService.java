@@ -28,9 +28,9 @@ public class MathService {
             int i = linearSearch(ls, n);
 
             String response =   "{" + "\n" +
-                                "operation: " + "linearsearch" + "\n" +
-                                "inputlist:" + rawList + "\n" +
-                                "value:" + value + "\n" +
+                                "operation: " + "linearsearch," + "\n" +
+                                "inputlist:" + rawList + ",\n" +
+                                "value:" + value + ",\n" +
                                 "output:" + i + "\n" +
                                 "}";
 
@@ -77,7 +77,7 @@ public class MathService {
     }
 
     private static int linearSearch(List<Integer> ls, int n) {
-        int i = 1;
+        int i = 0;
         int response = -1;
         for(int v : ls){
             if(v == n){

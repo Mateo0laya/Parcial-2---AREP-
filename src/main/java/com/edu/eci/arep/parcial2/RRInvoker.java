@@ -16,6 +16,7 @@ public class RRInvoker {
     public static String invoke(String path) throws IOException {
 
         setUrl(path);
+        System.out.println(GET_URL);
 
         URL obj = new URL(GET_URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();

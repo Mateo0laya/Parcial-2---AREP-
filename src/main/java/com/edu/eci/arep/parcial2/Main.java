@@ -12,18 +12,26 @@ public class Main {
         port(getPort());
         
         
-        get("/linearSearch", (req,res) -> {
+        get("/linearsearch", (req,res) -> {
 
             String[] uri = req.uri().split("/");
-            String path = uri[uri.length-1];
+            String type = uri[uri.length-1];
+            String list = req.queryParams("list");
+            String value = req.queryParams("value");
+
+            String path = type + "?list=" + list + "&value=" + value;
 
             return RRInvoker.invoke(path);
         });
 
-        get("/binarySearch", (req,res) -> {
+        get("/binarysearch", (req,res) -> {
 
             String[] uri = req.uri().split("/");
-            String path = uri[uri.length-1];
+            String type = uri[uri.length-1];
+            String list = req.queryParams("list");
+            String value = req.queryParams("value");
+
+            String path = type + "?list=" + list + "&value=" + value;
 
             return RRInvoker.invoke(path);
         });

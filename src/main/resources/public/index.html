@@ -8,16 +8,16 @@
     <body>
         <h1>Linear Search</h1>
         <form action="/linearsearch">
-            <label for="listls">List:</label><br>
+            <label for="name">List:</label><br>
             <input type="text" id="listls" name="listls" placeholder="10,20,13,40,60"><br><br>
-            <label for="valuels">Value:</label><br>
+            <label for="name">Value:</label><br>
             <input type="text" id="valuels" name="valuels" placeholder="13"><br><br>
-            <input type="button" value="Submit" onclick="loadGetMsg()">
+            <input type="button" value="Submit" onclick="loadGetMsgls()">
         </form> 
         <div id="getrespmsgls"></div>
 
         <script>
-            function loadGetMsg() {
+            function loadGetMsgls() {
                 let listls = document.getElementById("listls").value;
                 let valuels = document.getElementById("valuels").value;
                 const xhttp = new XMLHttpRequest();
@@ -32,16 +32,16 @@
 
         <h1>Linear Search</h1>
         <form action="/binarysearch">
-            <label for="listbs">List:</label><br>
+            <label for="name">List:</label><br>
             <input type="text" id="listbs" name="listbs" placeholder="10,20,13,40,60"><br><br>
-            <label for="valuebs">Value:</label><br>
+            <label for="name">Value:</label><br>
             <input type="text" id="valuebs" name="valuebs" placeholder="13"><br><br>
-            <input type="button" value="Submit" onclick="loadGetMsg()">
+            <input type="button" value="Submit" onclick="loadGetMsgbs()">
         </form> 
         <div id="getrespmsgbs"></div>
 
         <script>
-            function loadGetMsg() {
+            function loadGetMsgbs() {
                 let listbs = document.getElementById("listbs").value;
                 let valuebs = document.getElementById("valuebs").value;
                 const xhttp = new XMLHttpRequest();
